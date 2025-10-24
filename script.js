@@ -1,14 +1,17 @@
-// بيانات وهمية لنقاط الجمع (يجب أن تأتي من قاعدة بيانات حقيقية لاحقاً)
+// بيانات وهمية لنقاط الجمع في الرياض، السعودية
 const recycleLocations = [
-    { id: 1, name: 'مركز الأمل لإعادة التدوير', lat: 30.0444, lng: 31.2357, materials: ['بلاستيك', 'ورق', 'معدن'], rating: 4.5, reviews: 12 },
-    { id: 2, name: 'نقطة جمع البطاريات', lat: 30.05, lng: 31.24, materials: ['بطاريات', 'أجهزة إلكترونية'], rating: 3.8, reviews: 5 },
-    { id: 3, name: 'جمعية البيئة الخضراء', lat: 30.035, lng: 31.23, materials: ['زجاج', 'ورق'], rating: 5.0, reviews: 20 },
-    // يمكن إضافة المزيد من النقاط
+    // الإحداثيات تم اختيارها لتمثيل مواقع مختلفة في الرياض
+    { id: 1, name: 'مركز الشمال لإعادة التدوير', lat: 24.7500, lng: 46.6800, materials: ['بلاستيك', 'ورق', 'معدن'], rating: 4.5, reviews: 12 },
+    { id: 2, name: 'نقطة البطاريات في العليا', lat: 24.7000, lng: 46.6500, materials: ['بطاريات', 'أجهزة إلكترونية'], rating: 3.8, reviews: 5 },
+    { id: 3, name: 'جمعية الرياض الخضراء', lat: 24.7200, lng: 46.7000, materials: ['زجاج', 'ورق'], rating: 5.0, reviews: 20 },
+    { id: 4, name: 'نقطة تجميع الزيوت المستعملة', lat: 24.6850, lng: 46.6650, materials: ['زيوت', 'سوائل'], rating: 4.1, reviews: 8 }
+    // يمكنك إضافة المزيد من النقاط هنا
 ];
 
 // تهيئة الخريطة باستخدام Leaflet
-// الإحداثيات هي مثال لمدينة القاهرة
-const map = L.map('recycle-map').setView([30.0444, 31.2357], 13);
+// تم تحديد مركز الخريطة الافتراضي ليكون وسط الرياض تقريباً: (24.7136, 46.6753)
+// مستوى التكبير (zoom level) هو 11
+const map = L.map('recycle-map').setView([24.7136, 46.6753], 11); 
 
 // إضافة طبقة البلاط (Tiles) من OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -39,6 +42,7 @@ function renderLocations(locationsToDisplay) {
         const card = document.createElement('div');
         card.className = 'location-card';
         
+        // إنشاء نجوم التقييم
         const ratingStars = '★'.repeat(Math.floor(location.rating)) + '☆'.repeat(5 - Math.floor(location.rating));
         
         card.innerHTML = `
@@ -63,7 +67,7 @@ function filterLocations() {
         return;
     }
 
-    // 2. البحث والتصفية
+    // 2. البحث والتصفية (يجد المراكز التي تحتوي على المادة المبحوث عنها)
     const filtered = recycleLocations.filter(location => 
         location.materials.some(material => 
             material.toLowerCase().includes(searchTerm)
