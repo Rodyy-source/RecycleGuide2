@@ -1,1 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    direction: rtl; /* دعم اللغة العربية */
+    text-align: right;
+}
 
+header {
+    background-color: #4CAF50; /* لون صديق للبيئة */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+/* تنسيق شريط البحث */
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#material-search {
+    padding: 10px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    box-sizing: border-box;
+    text-align: right; /* محاذاة النص داخل البحث */
+}
+
+.search-section button {
+    padding: 10px 15px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+/* تنسيق الخريطة */
+#recycle-map {
+    height: 400px; /* ارتفاع الخريطة ضروري لظهورها */
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+/* تنسيق قائمة المراكز */
+.location-card {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.rating {
+    color: gold;
+    font-size: 1.2em;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
